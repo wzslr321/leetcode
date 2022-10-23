@@ -3,10 +3,11 @@ public:
     vector<vector<int>> groupThePeople(const vector<int> &groupSizes) {
 
         unordered_map<int, vector<vector<int>>> mp;
-        unordered_map<int, int> lastOccurence;
         vector<pair<int, vector<int>>> toPush = {};
 
         vector<vector<int>> ans = {};
+        
+        unordered_map<int, int> lastOccurence;
         for(size_t i = 0; i < groupSizes.size(); ++i) {
             lastOccurence[groupSizes[i]] = i;
         }
