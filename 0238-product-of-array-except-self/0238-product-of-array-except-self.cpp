@@ -6,25 +6,13 @@ public:
         vector<int> left(N);
         vector<int> right(N);
             
-        for(int i = 0, val = 1; i < N; ++i) {
-            val *= nums[i];
-            left[i] = val;
-        }
-        for(int i = N - 1, val = 1; i >= 0; --i) {
-            val *= nums[i];
-            right[i] = val;
-        }
-        for(size_t i = 0; i < N ; ++i) {
-            if(i == 0) {
-                ans[i] = right[i + 1];
-                continue;
-            }
-            if(i == N - 1) {
-                ans[i] = left[i - 1];
-                continue;
-            }
+        for(int i = 0, vali = 1, valj = 1, j = N - 1; i < N; ++i, --j) 
+            vali *= nums[i], valj *= nums[j], left[i] = vali, right[j] = valj;
+        
+        ans[0] = right[1], ans[N - 1] = left[N - 2];
+        for(size_t i = 1; i < N - 1; ++i) 
             ans[i] = right[i + 1] * left[i - 1];
-        }
+        
         return ans;
     }
 };
