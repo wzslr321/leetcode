@@ -2,9 +2,7 @@ class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
         auto N = nums.size();
-        vector<int> ans(N);
-        vector<int> left(N);
-        vector<int> right(N);
+        vector<int>ans(N), left(N), right(N);
             
         for(int i = 0, vali = 1, valj = 1, j = N - 1; i < N; ++i, --j) 
             vali *= nums[i], valj *= nums[j], left[i] = vali, right[j] = valj;
