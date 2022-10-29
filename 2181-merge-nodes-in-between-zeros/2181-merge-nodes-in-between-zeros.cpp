@@ -17,7 +17,6 @@ public:
         head=head->next;
         while(head) {
             if(head->val == 0) {
-                cout << "dupa ";
                 auto node = new ListNode(sum);
                 if(!h) {
                     h = node;
@@ -32,7 +31,6 @@ public:
             sum += head->val;
             head = head->next;
         }
-        cout << '\n';
         return ans;
     }
 };
