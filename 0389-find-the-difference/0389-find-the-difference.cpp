@@ -1,12 +1,27 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        sort(s.begin(), s.end());
-        sort(t.begin(), t.end());
-        for(size_t i = 0; i < s.size(); ++i) {
-            if(s[i] != t[i]) return t[i];
+        unordered_map<char, int> sm;
+        unordered_map<char, int> st;
+        
+        for(const auto ch: s) {
+            if(!sm[ch]) {
+                sm[ch] = 1;
+                continue;
+            }
+            ++sm[ch];
+        }
+        for(const auto ch: t) {
+            if(!sm[ch]) {
+                st[ch] = 1;
+                continue;
+            }
+            ++st[ch];
         }
         
-        return t[t.size() - 1];
+        for(const auto ch: t) {
+            if(st[ch] != sm[ch]) return ch;
+        }
+        return t[0];
     }
 };
